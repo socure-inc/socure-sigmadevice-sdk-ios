@@ -1,0 +1,300 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name DeviceRisk
+import AVFoundation
+import AdSupport
+import AppTrackingTransparency
+import SystemConfiguration.CaptiveNetwork
+import CoreLocation
+import CoreMotion
+import CoreTelephony
+@_exported import DeviceRisk
+import ExternalAccessory
+import Foundation
+import ImageIO
+import MessageUI
+import Network
+import Swift
+import SystemConfiguration
+import TrustKit
+import UIKit
+import _Concurrency
+public protocol DeviceRiskUploadCallback : AnyObject {
+  func dataUploadFinished(uploadResult: DeviceRisk.DeviceRiskUploadResult)
+  func onError(errorType: DeviceRisk.DeviceRiskErrorType, errorMessage: Swift.String)
+}
+@objc @_inheritsConvenienceInitializers public class DeviceRiskUploadResult : ObjectiveC.NSObject {
+  public var uuid: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class Reachability {
+  public func isConnectedToNetwork() -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class ThreadedQueue<T> : DeviceRisk.ThreadedObject<DeviceRisk.LinkedQueue<T>> {
+  public typealias InternalCollectionType = DeviceRisk.LinkedQueue<T>
+  public typealias Element = DeviceRisk.ThreadedQueue<T>.InternalCollectionType.Element
+  public init(_ queue: DeviceRisk.LinkedQueue<T>, type: DeviceRisk.ThreadingType)
+  convenience public init()
+  convenience public init(_ queue: DeviceRisk.LinkedQueue<T>)
+  @objc deinit
+}
+extension DeviceRisk.ThreadedQueue {
+  public var count: Swift.Int {
+    get
+  }
+  public var isEmpty: Swift.Bool {
+    get
+  }
+  public var front: DeviceRisk.ThreadedQueue<T>.Element? {
+    get
+  }
+  public var back: DeviceRisk.ThreadedQueue<T>.Element? {
+    get
+  }
+}
+extension DeviceRisk.ThreadedQueue {
+  public func enqueue(_ newElement: DeviceRisk.ThreadedQueue<T>.Element)
+  @discardableResult
+  public func dequeue() -> DeviceRisk.ThreadedQueue<T>.Element
+  @discardableResult
+  public func safeDequeue() -> DeviceRisk.ThreadedQueue<T>.Element?
+}
+extension DeviceRisk.ThreadedQueue {
+  public func forEach(_ callback: @escaping (DeviceRisk.ThreadedQueue<T>.Element) -> Swift.Void)
+  public func map<U>(_ transform: @escaping (DeviceRisk.ThreadedQueue<T>.Element) -> U) -> [U]
+}
+extension DeviceRisk.ThreadedQueue : DeviceRisk.ThreadedCollection {
+  public var unthreaded: DeviceRisk.ThreadedQueue<T>.InternalCollectionType {
+    get
+  }
+}
+public func loggingPrint<T>(_ object: @autoclosure () -> T)
+public enum ThreadingType {
+  case concurrent
+  case serial
+  public static func == (a: DeviceRisk.ThreadingType, b: DeviceRisk.ThreadingType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct LinkedQueue<T> {
+  public typealias Element = T
+  public var count: Swift.Int {
+    get
+  }
+  public init()
+}
+extension DeviceRisk.LinkedQueue {
+  public var front: DeviceRisk.LinkedQueue<T>.Element? {
+    get
+  }
+  public var back: DeviceRisk.LinkedQueue<T>.Element? {
+    get
+  }
+  public var isEmpty: Swift.Bool {
+    get
+  }
+}
+extension DeviceRisk.LinkedQueue {
+  public mutating func enqueue(_ newElement: DeviceRisk.LinkedQueue<T>.Element)
+  @discardableResult
+  public mutating func dequeue() -> DeviceRisk.LinkedQueue<T>.Element
+}
+extension DeviceRisk.LinkedQueue {
+  public func forEach(_ callback: @escaping (DeviceRisk.LinkedQueue<T>.Element) throws -> Swift.Void) rethrows
+  public func map<U>(_ transform: @escaping (DeviceRisk.LinkedQueue<T>.Element) throws -> U) rethrows -> [U]
+}
+@_hasMissingDesignatedInitializers public class ThreadedObject<Element> {
+  public var threadingType: DeviceRisk.ThreadingType {
+    get
+  }
+  public func async(_ callback: @escaping (inout Element) -> Swift.Void)
+  public func sync<ReturnType>(_ callback: @escaping (Element) -> ReturnType) -> ReturnType
+  public func mutatingSync<ReturnType>(_ callback: @escaping (inout Element) -> ReturnType) -> ReturnType
+  @objc deinit
+}
+public protocol ThreadedCollection {
+  associatedtype InternalCollectionType
+  var unthreaded: Self.InternalCollectionType { get }
+}
+public class DeviceRiskManager {
+  public typealias CompletionBlock = ((_ success: Swift.Bool, _ result: DeviceRisk.DeviceRiskUploadResult?) -> Swift.Void)
+  public static let sharedInstance: DeviceRisk.DeviceRiskManager
+  weak public var delegate: DeviceRisk.DeviceRiskUploadCallback?
+  public var deviceRiskKey: Swift.String {
+    get
+  }
+  public var userConsentProvided: Swift.Bool
+  public var uuid: Swift.String? {
+    get
+  }
+  public enum Context {
+    case homepage
+    case signup
+    case login
+    case profile
+    case password
+    case transaction
+    case checkout
+    case other(Swift.String)
+  }
+  public init(key: Swift.String? = nil, existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
+  public func setTracker(key: Swift.String, sources: [DeviceRisk.DeviceRiskDataSources] = [.device, .network, .locale, .accelerometer, .motion, .magnetometer, .accessibility], existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
+  public func passMotionData(accelerometerData: CoreMotion.CMAccelerometerData?, magnetometerData: CoreMotion.CMMagnetometerData?, deviceMotionData: CoreMotion.CMDeviceMotion)
+  public func passPedometerData(pedometerData: CoreMotion.CMPedometerData)
+  public func passLocationData(locationData: CoreLocation.CLLocation)
+  public func passDocumentVerificationData(exifData: [Swift.String : Any])
+  public func passContextData(eventsDictionary: [Swift.String : Swift.String])
+  public func sendData(forceRefresh: Swift.Bool = false, _ completion: DeviceRisk.DeviceRiskManager.CompletionBlock? = nil, _ isRNused: Swift.Bool = false, context: DeviceRisk.DeviceRiskManager.Context)
+  public func sendData(forceRefresh: Swift.Bool = false, _ completion: DeviceRisk.DeviceRiskManager.CompletionBlock? = nil, _ isRNused: Swift.Bool = false, stringContext: Swift.String? = nil)
+  @objc deinit
+}
+public enum DeviceRiskErrorType {
+  case InternetConnection
+  case DeviceDataUploadError
+  case DeviceDataUploadFailed
+  case Error
+  public static func == (a: DeviceRisk.DeviceRiskErrorType, b: DeviceRisk.DeviceRiskErrorType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum DeviceRiskDataSources {
+  case device
+  case accelerometer
+  case motion
+  case magnetometer
+  case locale
+  case location
+  case advertising
+  case pedometer
+  case network
+  case accessibility
+  case exif
+  case context
+  public var key: Swift.String {
+    get
+  }
+  public static var allSources: [DeviceRisk.DeviceRiskDataSources] {
+    get
+  }
+  public static func getDataSource(key: Swift.String) -> DeviceRisk.DeviceRiskDataSources?
+  public static func == (a: DeviceRisk.DeviceRiskDataSources, b: DeviceRisk.DeviceRiskDataSources) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class Atomic<Element> : DeviceRisk.ThreadedObject<Element> {
+  public init(_ value: Element, type: DeviceRisk.ThreadingType)
+  convenience public init(_ value: Element)
+  public func load() -> Element
+  public func loading(_ action: @escaping (inout Element) -> Swift.Void)
+  public func store(_ newValue: Element)
+  @objc deinit
+}
+extension DeviceRisk.Atomic : Swift.CustomStringConvertible where Element : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension DeviceRisk.Atomic : Swift.CustomDebugStringConvertible where Element : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers public class ThreadedArray<T> : DeviceRisk.ThreadedObject<Swift.Array<T>> {
+  public typealias InternalCollectionType = Swift.Array<T>
+  public typealias Index = DeviceRisk.ThreadedArray<T>.InternalCollectionType.Index
+  public typealias Element = DeviceRisk.ThreadedArray<T>.InternalCollectionType.Element
+  public init(_ array: [DeviceRisk.ThreadedArray<T>.Element], type: DeviceRisk.ThreadingType)
+  convenience public init()
+  convenience public init(_ array: [DeviceRisk.ThreadedArray<T>.Element])
+  @objc deinit
+}
+extension DeviceRisk.ThreadedArray {
+  public func append(_ newElement: DeviceRisk.ThreadedArray<T>.Element)
+  public func append<S>(contentsOf sequence: S) where T == S.Element, S : Swift.Sequence
+  public func remove(at index: DeviceRisk.ThreadedArray<T>.Index, callback: ((DeviceRisk.ThreadedArray<T>.Element) -> Swift.Void)? = nil)
+  public func removeFirst(callback: ((DeviceRisk.ThreadedArray<T>.Element) -> Swift.Void)? = nil)
+  public func removeLast(callback: ((DeviceRisk.ThreadedArray<T>.Element) -> Swift.Void)? = nil)
+}
+extension DeviceRisk.ThreadedArray : DeviceRisk.ThreadedCollection {
+  public var unthreaded: Swift.Array<DeviceRisk.ThreadedArray<T>.Element> {
+    get
+  }
+}
+extension DeviceRisk.ThreadedArray : Swift.MutableCollection, Swift.RandomAccessCollection {
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public subscript(position: Swift.Int) -> DeviceRisk.ThreadedArray<T>.Element {
+    get
+    set
+  }
+  public func index(after i: DeviceRisk.ThreadedArray<T>.Index) -> DeviceRisk.ThreadedArray<T>.Index
+  public typealias Indices = Swift.Range<DeviceRisk.ThreadedArray<T>.Index>
+  public typealias Iterator = Swift.IndexingIterator<DeviceRisk.ThreadedArray<T>>
+  public typealias SubSequence = Swift.Slice<DeviceRisk.ThreadedArray<T>>
+}
+public enum SDKEnvironment {
+}
+@_inheritsConvenienceInitializers public class ThreadedDictionary<Key, Value> : DeviceRisk.ThreadedObject<Swift.Dictionary<Key, Value>> where Key : Swift.Hashable {
+  public typealias InternalCollectionType = Swift.Dictionary<Key, Value>
+  public typealias Index = DeviceRisk.ThreadedDictionary<Key, Value>.InternalCollectionType.Index
+  public typealias Element = DeviceRisk.ThreadedDictionary<Key, Value>.InternalCollectionType.Element
+  public typealias Keys = DeviceRisk.ThreadedDictionary<Key, Value>.InternalCollectionType.Keys
+  public typealias Values = DeviceRisk.ThreadedDictionary<Key, Value>.InternalCollectionType.Values
+  public init(_ dictionary: [Key : Value], type: DeviceRisk.ThreadingType)
+  convenience public init()
+  convenience public init(_ dictionary: [Key : Value])
+  public subscript(key: Key) -> Value? {
+    get
+    set
+  }
+  @objc deinit
+}
+extension DeviceRisk.ThreadedDictionary {
+  public var keys: DeviceRisk.ThreadedDictionary<Key, Value>.Keys {
+    get
+  }
+  public var values: DeviceRisk.ThreadedDictionary<Key, Value>.Values {
+    get
+  }
+}
+extension DeviceRisk.ThreadedDictionary {
+  public func mapValues<T>(_ transform: @escaping (Value) -> T) -> [Key : T]
+}
+extension DeviceRisk.ThreadedDictionary : DeviceRisk.ThreadedCollection {
+  public var unthreaded: Swift.Dictionary<Key, Value> {
+    get
+  }
+}
+extension DeviceRisk.ThreadedDictionary : Swift.Collection {
+  public subscript(position: DeviceRisk.ThreadedDictionary<Key, Value>.Index) -> DeviceRisk.ThreadedDictionary<Key, Value>.Element {
+    get
+  }
+  public func index(after i: DeviceRisk.ThreadedDictionary<Key, Value>.Index) -> DeviceRisk.ThreadedDictionary<Key, Value>.Index
+  public var startIndex: DeviceRisk.ThreadedDictionary<Key, Value>.Index {
+    get
+  }
+  public var endIndex: DeviceRisk.ThreadedDictionary<Key, Value>.Index {
+    get
+  }
+  public typealias Indices = Swift.DefaultIndices<DeviceRisk.ThreadedDictionary<Key, Value>>
+  public typealias Iterator = Swift.IndexingIterator<DeviceRisk.ThreadedDictionary<Key, Value>>
+  public typealias SubSequence = Swift.Slice<DeviceRisk.ThreadedDictionary<Key, Value>>
+}
+extension DeviceRisk.ThreadingType : Swift.Equatable {}
+extension DeviceRisk.ThreadingType : Swift.Hashable {}
+extension DeviceRisk.DeviceRiskErrorType : Swift.Equatable {}
+extension DeviceRisk.DeviceRiskErrorType : Swift.Hashable {}
+extension DeviceRisk.DeviceRiskDataSources : Swift.Equatable {}
+extension DeviceRisk.DeviceRiskDataSources : Swift.Hashable {}

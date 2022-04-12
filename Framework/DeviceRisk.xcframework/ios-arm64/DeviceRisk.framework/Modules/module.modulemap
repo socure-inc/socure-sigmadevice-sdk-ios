@@ -1,0 +1,11 @@
+framework module DeviceRisk {
+  umbrella header "DeviceRisk.h"
+
+  export *
+  module * { export * }
+}
+
+module DeviceRisk.Swift {
+    header "DeviceRisk-Swift.h"
+    requires objc
+}
