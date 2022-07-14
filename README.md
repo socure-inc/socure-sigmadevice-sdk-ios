@@ -18,7 +18,7 @@ use_frameworks!
 
 # Pods for Sigma Device
 
-pod 'DeviceRisk', :git => 'https://github.com/socure-inc/socure-sigmadevice-sdk-ios.git'
+pod 'SocureDeviceRisk'
 ```
 
 ## Configuration and usage
