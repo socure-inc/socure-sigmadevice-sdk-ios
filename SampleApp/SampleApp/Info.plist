@@ -56,7 +56,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>socurePublicKey</key>
-	<string>REPLACE ME</string>
 </dict>
 </plist>

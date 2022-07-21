@@ -31,13 +31,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        var existingDeviceRiskUUID:String? = nil
-        
-        if let uuid = UserDefaults.standard.string(forKey: "DeviceRiskUUID") {
-            existingDeviceRiskUUID = uuid
-        }
-        
-        deviceRiskManager.setTracker(key: "Socure-public-key", sources:  [.device, .network, .accessibility, .locale, .advertising, .accelerometer,.magnetometer,.motion, .pedometer, .location], existingUUID: existingDeviceRiskUUID)
+        deviceRiskManager.setTracker(key: "Socure-public-key", sources:  [.device, .network, .accessibility, .locale, .advertising, .accelerometer,.magnetometer,.motion, .pedometer, .location], existingUUID: nil)
         deviceRiskManager.delegate = self
         resultsTextView?.text = "Results will be shown here."
     
