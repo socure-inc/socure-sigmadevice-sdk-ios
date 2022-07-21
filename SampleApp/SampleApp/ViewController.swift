@@ -31,13 +31,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        var existingDeviceRiskUUID:String? = nil
-        
-        if let uuid = UserDefaults.standard.string(forKey: "DeviceRiskUUID") {
-            existingDeviceRiskUUID = uuid
-        }
-        
-        deviceRiskManager.setTracker(key: "Socure-public-key", sources:  [.device, .network, .accessibility, .locale, .advertising, .accelerometer,.magnetometer,.motion, .pedometer, .location], existingUUID: existingDeviceRiskUUID)
+        deviceRiskManager.setTracker(key: "Socure-public-key", sources:  [.device, .network, .accessibility, .locale, .advertising, .accelerometer,.magnetometer,.motion, .pedometer, .location], existingUUID: nil)
         deviceRiskManager.delegate = self
         resultsTextView?.text = "Results will be shown here."
     
@@ -92,15 +86,12 @@ class ViewController: UIViewController {
                 weakSelf.deviceAssessmentButton?.isEnabled = true
 
             }
-            
         }
-
-        
-        
     }
 
 }
-extension ViewController:DeviceRiskUploadCallback {
+
+extension ViewController: DeviceRiskUploadCallback {
     func dataUploadFinished(uploadResult: DeviceRiskUploadResult) {
         resultsTextView?.text = "UUID is \(uploadResult.uuid ?? "not generated")"
         deviceAssessmentButton?.isEnabled = true
@@ -112,6 +103,5 @@ extension ViewController:DeviceRiskUploadCallback {
     func onError(errorType: DeviceRiskErrorType, errorMessage: String) {
         resultsTextView?.text = errorMessage
     }
-    
     
 }
