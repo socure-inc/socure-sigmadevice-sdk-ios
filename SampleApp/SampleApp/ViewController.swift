@@ -92,15 +92,12 @@ class ViewController: UIViewController {
                 weakSelf.deviceAssessmentButton?.isEnabled = true
 
             }
-            
         }
-
-        
-        
     }
 
 }
-extension ViewController:DeviceRiskUploadCallback {
+
+extension ViewController: DeviceRiskUploadCallback {
     func dataUploadFinished(uploadResult: DeviceRiskUploadResult) {
         resultsTextView?.text = "UUID is \(uploadResult.uuid ?? "not generated")"
         deviceAssessmentButton?.isEnabled = true
@@ -112,6 +109,5 @@ extension ViewController:DeviceRiskUploadCallback {
     func onError(errorType: DeviceRiskErrorType, errorMessage: String) {
         resultsTextView?.text = errorMessage
     }
-    
     
 }
