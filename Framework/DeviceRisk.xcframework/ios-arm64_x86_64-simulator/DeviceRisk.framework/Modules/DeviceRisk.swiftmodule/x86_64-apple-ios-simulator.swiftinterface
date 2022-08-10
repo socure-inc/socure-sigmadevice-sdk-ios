@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name DeviceRisk
 import AVFoundation
 import AdSupport
@@ -120,7 +120,7 @@ public protocol ThreadedCollection {
   associatedtype InternalCollectionType
   var unthreaded: Self.InternalCollectionType { get }
 }
-public class DeviceRiskManager {
+@_hasMissingDesignatedInitializers public class DeviceRiskManager {
   public typealias CompletionBlock = ((_ success: Swift.Bool, _ result: DeviceRisk.DeviceRiskUploadResult?) -> Swift.Void)
   public static let sharedInstance: DeviceRisk.DeviceRiskManager
   weak public var delegate: DeviceRisk.DeviceRiskUploadCallback?
@@ -141,15 +141,15 @@ public class DeviceRiskManager {
     case checkout
     case other(Swift.String)
   }
-  public init(key: Swift.String? = nil, existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
+  convenience public init(key: Swift.String? = nil, existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
   public func setTracker(key: Swift.String, sources: [DeviceRisk.DeviceRiskDataSources] = [.device, .network, .locale, .accelerometer, .motion, .magnetometer, .accessibility], existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
   public func passMotionData(accelerometerData: CoreMotion.CMAccelerometerData?, magnetometerData: CoreMotion.CMMagnetometerData?, deviceMotionData: CoreMotion.CMDeviceMotion)
   public func passPedometerData(pedometerData: CoreMotion.CMPedometerData)
   public func passLocationData(locationData: CoreLocation.CLLocation)
   public func passDocumentVerificationData(exifData: [Swift.String : Any])
   public func passContextData(eventsDictionary: [Swift.String : Swift.String])
-  public func sendData(forceRefresh: Swift.Bool = false, _ completion: DeviceRisk.DeviceRiskManager.CompletionBlock? = nil, _ isRNused: Swift.Bool = false, context: DeviceRisk.DeviceRiskManager.Context)
-  public func sendData(forceRefresh: Swift.Bool = false, _ completion: DeviceRisk.DeviceRiskManager.CompletionBlock? = nil, _ isRNused: Swift.Bool = false, stringContext: Swift.String? = nil)
+  public func sendData(forceRefresh: Swift.Bool = false, _ completion: DeviceRisk.DeviceRiskManager.CompletionBlock? = nil, _ isRNused: Swift.Bool = false, context: DeviceRisk.DeviceRiskManager.Context, retryOnFailure: Swift.Bool = true)
+  public func sendData(forceRefresh: Swift.Bool = false, _ completion: DeviceRisk.DeviceRiskManager.CompletionBlock? = nil, _ isRNused: Swift.Bool = false, stringContext: Swift.String? = nil, retryOnFailure: Swift.Bool = true)
   @objc deinit
 }
 public enum DeviceRiskErrorType {
@@ -245,6 +245,9 @@ extension DeviceRisk.ThreadedArray : Swift.MutableCollection, Swift.RandomAccess
   public typealias SubSequence = Swift.Slice<DeviceRisk.ThreadedArray<T>>
 }
 public enum SDKEnvironment {
+}
+@_hasMissingDesignatedInitializers public class RetryHandler {
+  @objc deinit
 }
 @_inheritsConvenienceInitializers public class ThreadedDictionary<Key, Value> : DeviceRisk.ThreadedObject<Swift.Dictionary<Key, Value>> where Key : Swift.Hashable {
   public typealias InternalCollectionType = Swift.Dictionary<Key, Value>
