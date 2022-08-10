@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
   s.name             = "DeviceRisk"
-  s.version          = "1.1.0"
+  s.version          = "1.2.0"
   s.summary          = "Socure Device Risk SDK, iOS Version."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+#   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description      = <<-DESC
 Socure's DeviceRisk SDK, iOS version
                        DESC

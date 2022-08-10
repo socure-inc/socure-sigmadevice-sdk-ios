@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DeviceRisk-Swift.h</key>
 		<data>
-		Ye4DGNhSUxL40VrcK4MboDwMzVI=
+		zYl5n4enTB2heaDp/p2jWizzD2g=
 		</data>
 		<key>Headers/DeviceRisk.h</key>
 		<data>
@@ -14,19 +14,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FPRpsgj6+DbXdM50OAx6VaQtKYU=
+		9p7Gt6WH4eaSDTiP+yQARbrZYJw=
 		</data>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		GdbOVpChrYV8VfXDnqHxaV78kq4=
+		nHCm3t/J33gGwqb3KaUcmay+nlc=
 		</data>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		oZSUSXc9cwDc6noKsVYWqyGNDj4=
+		97bW3toKalaopydCudNm21jL/Hk=
 		</data>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		CC274LmXno7AwLWzx5b4NUU+zkc=
+		HQ2jynYIXf/VNjMjvQVR0Cf8I7U=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EDXu7/c7nvoH6X55umjcO+XNb/Sjl8EcdWndKOpxLfk=
+			mzfalG1xCDIwwbr0Rb32nwYR1HI3C4CEgoyxpQ4bv+8=
 			</data>
 		</dict>
 		<key>Headers/DeviceRisk.h</key>
@@ -53,21 +53,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Rp0sZcn4kHl2p/N0FI/+Cu3r3PsAYFGLKuNIlExVLng=
+			2URv4VNoVlU0opcIYgmzdxvq6SU7JNo4h1bu9BTImQw=
 			</data>
 		</dict>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mGjoQJT698E3i5UWgMhxTmGpJQacudDT6LXRVP9Bilc=
+			kCO+oo4/2fq8hg8ZTuXugG7bmRoziRWjdiE8KjdGHUk=
 			</data>
 		</dict>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6Zsx/zyLSNa1Md/4P+RIkozng9w4YbOXLGmYq0SqToU=
+			C0B/N/GcaIMpfuz/rYuIlcNoH20i/5XHAQ93APMzulQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
