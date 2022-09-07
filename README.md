@@ -23,4 +23,4 @@ pod 'SocureDeviceRisk'
 
 ## Configuration and usage
 
-For instructions on how to configure the SDK, see the [iOS SDK documentation](https://developer.socure.com/guide/deviceiossdk) on DevHub.
+For instructions on how to configure the SDK, see the [iOS SDK documentation](https://developer.socure.com/docs/sdks/sigma-device/ios-sdk/ios-overview) on DevHub.
