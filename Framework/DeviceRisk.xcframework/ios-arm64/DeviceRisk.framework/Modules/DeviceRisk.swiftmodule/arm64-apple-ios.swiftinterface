@@ -141,8 +141,12 @@ public protocol ThreadedCollection {
     case checkout
     case other(Swift.String)
   }
+  convenience public init(key: Swift.String? = nil, existingUUID: Swift.String? = nil)
+  @available(*, deprecated, message: "Use init(key:exsitingUUID) instead as `userConsent` is now being set to `true` always.")
   convenience public init(key: Swift.String? = nil, existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
+  @available(*, deprecated, message: "Use setTracker(key:sources:existingUUID:) instead as `userConsent` is now being set to `true` always.")
   public func setTracker(key: Swift.String, sources: [DeviceRisk.DeviceRiskDataSources] = [.device, .network, .locale, .accelerometer, .motion, .magnetometer, .accessibility], existingUUID: Swift.String? = nil, userConsent: Swift.Bool = true)
+  public func setTracker(key: Swift.String, sources: [DeviceRisk.DeviceRiskDataSources] = [.device, .network, .locale, .accelerometer, .motion, .magnetometer, .accessibility], existingUUID: Swift.String? = nil)
   public func passMotionData(accelerometerData: CoreMotion.CMAccelerometerData?, magnetometerData: CoreMotion.CMMagnetometerData?, deviceMotionData: CoreMotion.CMDeviceMotion)
   public func passPedometerData(pedometerData: CoreMotion.CMPedometerData)
   public func passLocationData(locationData: CoreLocation.CLLocation)
