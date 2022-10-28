@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DeviceRisk"
-  s.version          = "1.2.1"
+  s.version          = "2.0.0"
   s.summary          = "Socure Device Risk SDK, iOS Version."
 
 # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Socure's DeviceRisk SDK, iOS version
   s.source           = { :git => "https://github.com/socure-inc/socure-sigmadevice-sdk-ios", :tag => "#{s.version}"}
 
   s.platform = :ios
-  s.ios.deployment_target = "12.0"
+  s.ios.deployment_target = "13.0"
   s.swift_version = "5.0"
 
   s.vendored_frameworks = "Framework/DeviceRisk.xcframework"

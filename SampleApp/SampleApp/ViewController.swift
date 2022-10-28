@@ -10,13 +10,13 @@ import DeviceRisk
 import Alamofire
 
 class ViewController: UIViewController {
-    
-    let deviceRiskManager = DeviceRiskManager.sharedInstance
+
     @IBOutlet weak var titleLabel:UILabel?
     @IBOutlet weak var uploadButton:UIButton?
     @IBOutlet weak var deviceAssessmentButton:UIButton?
     @IBOutlet weak var resultsTextView:UITextView?
     let webcall = Webcalls(idPlusKey: "Socure-API-Key")
+    var deviceSessionID: String?
 
     let exampleUserData:[String:String] = ["firstName":"John",
                                     "surName":"Smith",
@@ -31,13 +31,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        deviceRiskManager.setTracker(key: "Socure-public-key", sources:  [.device, .network, .accessibility, .locale, .advertising, .accelerometer,.magnetometer,.motion, .pedometer, .location])
-        deviceRiskManager.delegate = self
         resultsTextView?.text = "Results will be shown here."
     
         deviceAssessmentButton?.isEnabled = false
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,18 +45,38 @@ class ViewController: UIViewController {
     }
 
     @IBAction func uploadData(sender:UIButton) {
-        
-        deviceRiskManager.sendData(context: .homepage)
+        let SDKKey = "Socure-public-key"
+        let config = SocureSigmaDeviceConfig(SDKKey: SDKKey)
+        let options = SocureFingerprintOptions(omitLocationData: false, advertisingID: nil, context: .homepage)
+        SocureSigmaDevice.fingerprint(config: config, options: options) { result, error in
+            guard let error = error else {
+                self.resultsTextView?.text = "UUID is \(result?.deviceSessionID ?? "not generated")"
+                self.deviceSessionID = result?.deviceSessionID
+                self.deviceAssessmentButton?.isEnabled = true
+                return
+            }
+
+            switch error {
+            case .unknownError, .dataFetchError:
+                self.resultsTextView?.text = "unknown error"
+            case .dataUploadError(let code, let message):
+                self.resultsTextView?.text = "\(code ?? 0): \(message ?? "")"
+            case .networkConnectionError(let nsUrlError):
+                self.resultsTextView?.text = "\(nsUrlError)"
+            default:
+                self.resultsTextView?.text = "unknown error"
+            }
+        }
     }
     
     @IBAction func getDeviceAssessment(sender:UIButton) {
         deviceAssessmentButton?.isEnabled = false
-        
-        guard let uuid = deviceRiskManager.uuid else {
+
+        guard let deviceSessionID = deviceSessionID else {
             return
         }
         
-        webcall.deviceRiskValidationAPICall(deviceRiskUUID: uuid, clientInfo: exampleUserData) { [weak self] response in
+        webcall.deviceRiskValidationAPICall(deviceRiskUUID: deviceSessionID, clientInfo: exampleUserData) { [weak self] response in
             
             guard let weakSelf = self else { return }
             
@@ -86,15 +102,5 @@ class ViewController: UIViewController {
                 weakSelf.deviceAssessmentButton?.isEnabled = true
             }
         }
-    }
-}
-extension ViewController:DeviceRiskUploadCallback {
-    func dataUploadFinished(uploadResult: DeviceRiskUploadResult) {
-        resultsTextView?.text = "UUID is \(uploadResult.uuid ?? "not generated")"
-        deviceAssessmentButton?.isEnabled = true
-    }
-    
-    func onError(errorType: DeviceRiskErrorType, errorMessage: String) {
-        resultsTextView?.text = errorMessage
     }
 }
