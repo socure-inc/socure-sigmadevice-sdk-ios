@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DeviceRisk-Swift.h</key>
 		<data>
-		zYl5n4enTB2heaDp/p2jWizzD2g=
+		FTnUpUSkits1IMo5KNHLh1JMa4c=
 		</data>
 		<key>Headers/DeviceRisk.h</key>
 		<data>
@@ -14,23 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		GDxLGo/kLIHIaj8xfoDVeRRaxBc=
+		9O+q5mCa4PKWbJ33xzo0sc6mo1I=
+		</data>
+		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.abi.json</key>
+		<data>
+		ZSGSQzv+XzuXjqlXNjghaPPj7KI=
+		</data>
+		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
+		<data>
+		InqFD7T1bYvnNLidBI8O6BTV0+o=
 		</data>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		7sxxnPwNSYkpLujfSdmFq4Ec3kE=
+		w6uHm/s1LxEtwhb+Gr1SauFVR1E=
 		</data>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		zwunK022OoWrUViqEOh8oWa1kz8=
+		InqFD7T1bYvnNLidBI8O6BTV0+o=
 		</data>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		J6WJVFmQxOm/CWeeD2vBtx9fr64=
+		AsmZs4xtAF+vfTiGvubIOmERJlc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		smazXCmwBZcHQeIaecGQa4viDUU=
+		ihXXtZVGRQS7mSO6DrLVWuiVUoU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -39,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mzfalG1xCDIwwbr0Rb32nwYR1HI3C4CEgoyxpQ4bv+8=
+			uXSO+X9gyzMNSDwOhG1/Q8sPPVLTE0xTOxeaaytdNkY=
 			</data>
 		</dict>
 		<key>Headers/DeviceRisk.h</key>
@@ -49,32 +57,46 @@
 			gFnarJfcLT46x12u2EK9VAw9PorX8Il+NG0BFgi79vY=
 			</data>
 		</dict>
+		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XsCD3UtRtMTLiiiM1GuosVI6PEYS3N/uKPijOxDh78k=
+			</data>
+		</dict>
+		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uSwoflDbs3fqNWfRbBEB3Rh4T1g6cbwYnR9KjK12VAg=
+			</data>
+		</dict>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7zStm77pb/1JPheWWvsZAhwerjh7vY+hAdMmSru89SE=
+			n0ur3xn0SGO7IXK6zOGXQ/HvBJpl/rSz6tGofMwYp3k=
 			</data>
 		</dict>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			24qaByabKEhUFC2n1MpGvyK4BQmyv2DQ9irUPT/44lk=
+			uSwoflDbs3fqNWfRbBEB3Rh4T1g6cbwYnR9KjK12VAg=
 			</data>
 		</dict>
 		<key>Modules/DeviceRisk.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3d52BZ49i0GOu/ma4WaN0b4LUPfMb6/8tZ7JgduK22M=
+			QCiikSESuUopmWYoBiR9FJXk4g3DKOOIp5gu8B8iOig=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5McafQSjB4umpfARGDsOguVEyWMeDzpK7VgCkI+6dJ4=
+			C+guPX87cG9joNcicSdB9qYAGB9Sf7t/ZKxwOs55PLo=
 			</data>
 		</dict>
 	</dict>
