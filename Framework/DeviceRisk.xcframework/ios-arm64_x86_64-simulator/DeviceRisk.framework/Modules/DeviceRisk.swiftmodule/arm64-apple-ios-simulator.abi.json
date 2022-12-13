@@ -456,7 +456,10 @@
         "name": "TrustKit",
         "printedName": "TrustKit",
         "declKind": "Import",
-        "moduleName": "DeviceRisk"
+        "moduleName": "DeviceRisk",
+        "declAttributes": [
+          "ImplementationOnly"
+        ]
       },
       {
         "kind": "Import",
@@ -5034,7 +5037,7 @@
     {
       "filePath": "\/Users\/pmellamp\/Workplace\/Projects\/device-risk-ios-sdk\/DeviceRisk\/DeviceRisk\/Network\/URLSessionManager.swift",
       "kind": "StringLiteral",
-      "offset": 2646,
+      "offset": 2667,
       "length": 28,
       "value": "\"imageUploadProgressUpdated\""
     },

@@ -19,7 +19,6 @@ import Network
 import NetworkExtension
 import Swift
 import SystemConfiguration
-import TrustKit
 import UIKit
 import _Concurrency
 import _StringProcessing
