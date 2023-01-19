@@ -6,6 +6,6 @@ framework module DeviceRisk {
 }
 
 module DeviceRisk.Swift {
-  header "DeviceRisk-Swift.h"
-  requires objc
+    header "DeviceRisk-Swift.h"
+    requires objc
 }
