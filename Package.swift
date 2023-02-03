@@ -11,6 +11,9 @@ let package = Package(
         .library(
             name: "SigmaDevice",
             targets: ["SigmaDeviceWrapper"]),
+        .library(
+            name: "SigmaDeviceWithoutTrustKit",
+            targets: ["DeviceRisk"])
     ],
     targets: [
         .binaryTarget(
