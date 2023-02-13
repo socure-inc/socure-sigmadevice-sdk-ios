@@ -21,12 +21,12 @@ let package = Package(
             path: "Frameworks/DeviceRisk.xcframework"
         ),
         .target(
-            name: "SPMDemoPackageWrapper",
+            name: "SigmaDeviceWrapper",
             dependencies: [
                 .target(name: "DeviceRisk"),
                 .product(name: "TrustKit", package: "TrustKit")
             ],
-            path: "SPMDemoPackageWrapper"
+            path: "SigmaDeviceWrapper"
         ),
     ]
 )
