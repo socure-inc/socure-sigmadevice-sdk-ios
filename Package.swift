@@ -18,7 +18,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "DeviceRisk",
-            path: "Frameworks/DeviceRisk.xcframework"
+            path: "Framework/DeviceRisk.xcframework"
         ),
         .target(
             name: "SigmaDeviceWrapper",
