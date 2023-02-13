@@ -10,27 +10,23 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "SigmaDevice",
-            targets: ["SigmaDeviceWrapper"]),
-        .library(
-            name: "SigmaDeviceWithoutTrustKit",
-            targets: ["DeviceRisk"])
+            targets: ["SigmaDeviceWrapper"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/datatheorem/TrustKit", from: "2.0.0")
     ],
     targets: [
         .binaryTarget(
             name: "DeviceRisk",
-            path: "Framework/DeviceRisk.xcframework"
-        ),
-        .binaryTarget(
-            name: "TrustKit",
-            path: "Framework/TrustKit.xcframework"
+            path: "Frameworks/DeviceRisk.xcframework"
         ),
         .target(
-            name: "SigmaDeviceWrapper",
+            name: "SPMDemoPackageWrapper",
             dependencies: [
                 .target(name: "DeviceRisk"),
-                .target(name: "TrustKit")
+                .product(name: "TrustKit", package: "TrustKit")
             ],
-            path: "SigmaDeviceWrapper"
+            path: "SPMDemoPackageWrapper"
         ),
     ]
 )

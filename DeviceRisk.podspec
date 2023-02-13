@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "DeviceRisk"
-  s.version          = "2.0.2"
+  s.version          = "2.0.3"
   s.summary          = "Socure Device Risk SDK, iOS Version."
 
 # This description is used to generate tags and improve search results.
