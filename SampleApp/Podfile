@@ -1,11 +1,11 @@
 platform :ios, '13.0'
-source 'https //github.com/cocoapods/specs.git'
+source 'https://github.com/cocoapods/specs.git'
 
 target 'SampleApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for SocureSdkDemo
-    pod 'SocureDeviceRisk', '~> 2.0.2'
+    pod 'SocureDeviceRisk', '~> 3.0.0'
     pod 'Alamofire'
 end

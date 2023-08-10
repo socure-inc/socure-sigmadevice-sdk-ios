@@ -1,32 +1,23 @@
 // swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
+
 let package = Package(
     name: "SigmaDevice",
     platforms: [
-           .iOS(.v13)
+        .iOS(.v13)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "SigmaDevice",
-            targets: ["SigmaDeviceWrapper"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/datatheorem/TrustKit", from: "2.0.0")
+            name: "DeviceRisk",
+            targets: ["DeviceRisk"])
     ],
     targets: [
         .binaryTarget(
             name: "DeviceRisk",
-            path: "Framework/DeviceRisk.xcframework"
-        ),
-        .target(
-            name: "SigmaDeviceWrapper",
-            dependencies: [
-                .target(name: "DeviceRisk"),
-                .product(name: "TrustKit", package: "TrustKit")
-            ],
-            path: "SigmaDeviceWrapper"
-        ),
+            url: "https://sdk.socure.com/socure-sdks/sigma-device/ios/socure-device-risk-3.0.0.zip",
+            checksum: "ede222ec3db1c920ba9706abf1c16e73aac17901a8a85559f61877b1b4bd222f"
+        )
     ]
 )
