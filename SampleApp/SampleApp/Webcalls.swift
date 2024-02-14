@@ -43,13 +43,13 @@ public class Webcalls: NSObject {
         }
     }
     
-    func deviceRiskValidationAPICall(deviceRiskUUID:String, clientInfo:[String:String], onCompletion: @escaping ((Any) -> Void), onError: @escaping ((Error?) -> Void)) {
+    func deviceRiskValidationAPICall(sessionToken:String, clientInfo:[String:String], onCompletion: @escaping ((Any) -> Void), onError: @escaping ((Error?) -> Void)) {
         
         let moduleArray = ["devicerisk"]
         
         var params:Parameters = Parameters()
         params["modules"] = moduleArray
-        params["deviceSessionId"] = deviceRiskUUID
+        params["deviceSessionId"] = sessionToken
         params["userConsent"] = true
         if let firstName = clientInfo["firstName"] {
             params["firstName"] = firstName

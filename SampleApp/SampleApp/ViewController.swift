@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var deviceAssessmentButton:UIButton?
     @IBOutlet weak var resultsTextView:UITextView?
     let webcall = Webcalls(idPlusKey: "Socure-API-Key")
-    var deviceSessionID: String?
+    var sessionToken: String?
 
     let exampleUserData:[String:String] = ["firstName":"John",
                                     "surName":"Smith",
@@ -45,13 +45,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func uploadData(sender:UIButton) {
-        let SDKKey = "Socure-public-key"
-        let config = SocureSigmaDeviceConfig(SDKKey: SDKKey)
-        let options = SocureFingerprintOptions(omitLocationData: false, advertisingID: nil, context: .homepage)
-        SocureSigmaDevice.fingerprint(config: config, options: options) { result, error in
+        SigmaDevice.processDevice() { result, error in
             guard let error = error else {
-                self.resultsTextView?.text = "UUID is \(result?.deviceSessionID ?? "not generated")"
-                self.deviceSessionID = result?.deviceSessionID
+                self.resultsTextView?.text = "sessionToken is \(result ?? "not generated")"
+                self.sessionToken = result
                 self.deviceAssessmentButton?.isEnabled = true
                 return
             }
@@ -60,7 +57,7 @@ class ViewController: UIViewController {
             case .unknownError, .dataFetchError:
                 self.resultsTextView?.text = "unknown error"
             case .dataUploadError(let code, let message):
-                self.resultsTextView?.text = "\(code ?? 0): \(message ?? "")"
+                self.resultsTextView?.text = "\(code ?? ""): \(message ?? "")"
             case .networkConnectionError(let nsUrlError):
                 self.resultsTextView?.text = "\(nsUrlError)"
             default:
@@ -72,11 +69,11 @@ class ViewController: UIViewController {
     @IBAction func getDeviceAssessment(sender:UIButton) {
         deviceAssessmentButton?.isEnabled = false
 
-        guard let deviceSessionID = deviceSessionID else {
+        guard let sessionToken = sessionToken else {
             return
         }
         
-        webcall.deviceRiskValidationAPICall(deviceRiskUUID: deviceSessionID, clientInfo: exampleUserData) { [weak self] response in
+        webcall.deviceRiskValidationAPICall(sessionToken: sessionToken, clientInfo: exampleUserData) { [weak self] response in
             
             guard let weakSelf = self else { return }
             
