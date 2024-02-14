@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DeviceRisk
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let SDKKey = "Socure-public-key"
+        let options = SigmaDeviceOptions(
+            omitLocationData: false,
+            advertisingID: nil)
+
+        SigmaDevice.initializeSDK(SDKKey, options: options) { result, error in
+            guard let error = error else {
+                if let sessionToken = result {
+                    print(sessionToken)
+                }
+                return
+            }
+
+            switch error {
+            case .dataUploadError(let code, let message):
+                print("\(code ?? ""): \(message ?? "")")
+            case .networkConnectionError(let nsUrlError):
+                print("\(nsUrlError)")
+            case .unknownError, .dataFetchError:
+                fallthrough
+            @unknown default:
+                print("unknown error")
+            }
+        }
+
         return true
     }
 
