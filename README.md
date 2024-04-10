@@ -5,7 +5,7 @@ The Sigma Device iOS SDK provides a framework for adding device fingerprinting i
 ## Minimum requirements
 
 -   iOS 13 and above
--   Xcode 14.3+, preferably Xcode 15+
+-   Xcode 15.3+
 
 ## Installation
 
