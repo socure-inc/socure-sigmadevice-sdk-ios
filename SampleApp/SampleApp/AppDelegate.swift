@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let SDKKey = "Socure-public-key"
         let options = SigmaDeviceOptions(
             omitLocationData: false,
-            advertisingID: nil)
+            advertisingID: nil,
+            useSocureGov: false,
+            configBaseUrl: nil)
 
         SigmaDevice.initializeSDK(SDKKey, options: options) { result, error in
             guard let error = error else {
@@ -32,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("\(code ?? ""): \(message ?? "")")
             case .networkConnectionError(let nsUrlError):
                 print("\(nsUrlError)")
-            case .unknownError, .dataFetchError:
+            case .dataFetchError:
+                print(".dataFetchError")
+            case .unknownError:
                 fallthrough
             @unknown default:
                 print("unknown error")
