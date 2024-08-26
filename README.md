@@ -5,7 +5,7 @@ The Sigma Device iOS SDK provides a framework to integrate device data collectio
 ## Minimum requirements
 
 -   iOS 13 and above
--   Xcode 15.0+
+-   Xcode 15.3+
 
 ## Installation
 
