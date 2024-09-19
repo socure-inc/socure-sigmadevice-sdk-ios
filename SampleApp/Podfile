@@ -6,6 +6,6 @@ target 'SampleApp' do
   use_frameworks!
 
   # Pods for SocureSdkDemo
-    pod 'SocureDeviceRisk', '~> 4.3.1'
+    pod 'SocureDeviceRisk', '~> 4.3.2'
     pod 'Alamofire'
 end
