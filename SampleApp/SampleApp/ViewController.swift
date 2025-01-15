@@ -1,13 +1,12 @@
 //
 //  ViewController.swift
-//  Demo App
+//  SampleApp
 //
-//  Created by Nicolas Dedual on 9/29/20.
+//  Copyright © 2025 Socure. All rights reserved.
 //
 
 import UIKit
 import DeviceRisk
-import Alamofire
 
 class ViewController: UIViewController {
 
