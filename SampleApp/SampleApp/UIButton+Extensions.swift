@@ -1,8 +1,8 @@
 //
 //  UIButton+Extensions.swift
-//  Demo App
+//  SampleApp
 //
-//  Created by Nicolas Dedual on 11/16/20.
+//  Copyright © 2025 Socure. All rights reserved.
 //
 
 import UIKit

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Demo App
+//  SampleApp
 //
-//  Created by Nicolas Dedual on 9/29/20.
+//  Copyright © 2025 Socure. All rights reserved.
 //
 
 import UIKit
@@ -32,10 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch error {
             case .dataUploadError(let code, let message):
                 print("\(code ?? ""): \(message ?? "")")
-            case .networkConnectionError(let nsUrlError):
-                print("\(nsUrlError)")
+            case .networkConnectionError(let networkConnectionError):
+                let nsError = networkConnectionError as NSError
+                print("\(nsError.domain): \(nsError.code): \(nsError.localizedDescription)")
             case .dataFetchError:
                 print(".dataFetchError")
+            case .sdkNotInitializedError:
+                print("The SDK is not initialzed!")
+            case .sdkPausedError:
+                print("The SDK is paused!")
             case .unknownError:
                 fallthrough
             @unknown default:
@@ -45,6 +50,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-
 }
-
