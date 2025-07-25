@@ -370,7 +370,7 @@
 			repositoryURL = "https://github.com/socure-inc/socure-sigmadevice-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.6.1;
+				minimumVersion = 4.6.2;
 			};
 		};
 		36A292012D36BC2200018418 /* XCRemoteSwiftPackageReference "alamofire" */ = {
