@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "DeviceRisk",
-            url: "https://sdk.socure.com/socure-sdks/sigma-device/ios/socure-device-risk-4.7.0.zip",
-            checksum: "feef287d1bd945f89d4430a83abf57b75a5055bfe664a65fbe75d1850bb480a6"
+            url: "https://sdk.socure.com/socure-sdks/sigma-device/ios/socure-device-risk-4.7.1.zip",
+            checksum: "8f35681fd4881f5d967980831faf3faa874f28a77005df77a5c1312fd18b6ae0"
         )
     ]
 )
