@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SigmaDevice",
     platforms: [
-        .iOS(.v13)
+        .iOS("15.0")
     ],
     products: [
         .library(
@@ -16,8 +16,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "DeviceRisk",
-            url: "https://sdk.socure.com/socure-sdks/sigma-device/ios/socure-device-risk-4.10.1.zip",
-            checksum: "5815310f0c79c9d8be5722b0f9de7706e8dcd660ffe5b4012278bfc49a1f3208"
+            url: "https://sdk.socure.com/socure-sdks/sigma-device/ios/socure-device-risk-4.11.0.zip",
+            checksum: "119b7e60f4bb2b2110981b3b0b351c4ed42cae1379d6f7ba95aae9619b24f300"
         )
     ]
 )
