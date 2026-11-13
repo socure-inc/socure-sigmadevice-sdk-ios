@@ -16,6 +16,7 @@
 		374F1DC02523A2820074448F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374F1DBE2523A2820074448F /* Main.storyboard */; };
 		374F1DC22523A2850074448F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374F1DC12523A2850074448F /* Assets.xcassets */; };
 		374F1DC52523A2850074448F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374F1DC32523A2850074448F /* LaunchScreen.storyboard */; };
+		8611373130A663A500851C0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611373030A663A500851C0E /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		374F1DC42523A2850074448F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		374F1DC62523A2850074448F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		374F1EEB2524E8A80074448F /* SampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SampleApp.entitlements; sourceTree = "<group>"; };
+		8611373030A663A500851C0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		374F1DB72523A2820074448F /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8611373030A663A500851C0E /* SceneDelegate.swift */,
 				374F1DB82523A2820074448F /* AppDelegate.swift */,
 				374F1DC12523A2850074448F /* Assets.xcassets */,
 				374F1DC62523A2850074448F /* Info.plist */,
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8611373130A663A500851C0E /* SceneDelegate.swift in Sources */,
 				374F1DBD2523A2820074448F /* ViewController.swift in Sources */,
 				373AAF8225632AE000FE0560 /* UIButton+Extensions.swift in Sources */,
 				373AAF762563098B00FE0560 /* Webcalls.swift in Sources */,
